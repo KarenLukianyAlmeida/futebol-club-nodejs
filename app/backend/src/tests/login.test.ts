@@ -6,7 +6,7 @@ import chaiHttp = require('chai-http');
 import { app } from '../app';
 import SequelizeUser from '../database/models/SequelizeUser';
 import { user } from './mocks/user.mock';
-import { token, loginWithoutEmail } from './mocks/login.mock';
+import { token, loginWithoutEmail, loginInvalidPasword } from './mocks/login.mock';
 import jwt from '../utils/jwt';
 
 chai.use(chaiHttp);
@@ -37,5 +37,14 @@ describe('Testing Login', () => {
 
     expect(status).to.be.equal(400);
     expect(body).to.be.deep.equal({ message: 'All fields must be filled'});
+  });
+
+  it('should not return a token when user login with invalid password', async function () {
+    const { email, password } = loginInvalidPasword;
+
+    const { status, body } = await chai.request(app).post('/login').send({email, password});
+
+    expect(status).to.be.equal(401);
+    expect(body).to.be.deep.equal({ message: 'Invalid email or password'});
   });
 });
