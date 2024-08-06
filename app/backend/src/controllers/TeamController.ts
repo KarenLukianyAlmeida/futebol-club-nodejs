@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-// import mapSatatusHTTP from '../utils/mapStatusHTTP';
 import TeamService from '../services/TeamService';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
 
