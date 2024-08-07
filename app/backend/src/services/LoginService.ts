@@ -47,9 +47,9 @@ export default class LoginService {
       return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
 
-    const { username } = userFound as IUsers;
+    const { username, role } = userFound as IUsers;
 
-    const token = jwt.sign({ username, email });
+    const token = jwt.sign({ username, email, role });
 
     return { status: 'SUCCESSFUL', data: { token } };
   }

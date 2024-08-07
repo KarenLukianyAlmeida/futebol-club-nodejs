@@ -11,4 +11,10 @@ export default class LoginController {
 
     return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
   }
+
+  public static getRole(req: Request, res: Response) {
+    const { role } = req.body.user.decoded;
+
+    return res.status(200).json({ role });
+  }
 }
