@@ -20,15 +20,13 @@ class TokenValidation {
     try {
       const decoded = await jwt.verify(token);
       console.log('decoded auth.  ', decoded.email);
-      const user = await this.userModel.findOne(decoded.email);
-      if (!user) {
-        return res.status(401).json({ message: 'Token must be a valid token' });
-      }
+      await this.userModel.findOne(decoded.email);
 
       req.body.user = { decoded };
+
       next();
     } catch (error) {
-      return res.status(401).json({ message: 'Invalid token' });
+      return res.status(401).json({ message: 'Token must be a valid token' });
     }
   }
 }

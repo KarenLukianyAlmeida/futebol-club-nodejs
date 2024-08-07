@@ -1,4 +1,4 @@
-import { Request, Router, Response } from 'express';
+import { Request, Router, Response, NextFunction } from 'express';
 import LoginController from '../controllers/LoginController';
 import TokenValidation from '../middlewares/auth.middleware';
 
@@ -10,7 +10,8 @@ const router = Router();
 router.post('/', (req: Request, res: Response) => loginController.login(req, res));
 router.get(
   '/role',
-  tokenValidation.validateToken,
+  (req: Request, res: Response, next: NextFunction) =>
+    tokenValidation.validateToken(req, res, next),
   (req: Request, res: Response) => LoginController.getRole(req, res),
 );
 
