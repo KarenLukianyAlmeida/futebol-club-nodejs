@@ -11,7 +11,7 @@ export default class MatchController {
     if (progress) {
       const serviceResponse = await this.matchService.getMatchesByProgress(progress);
       const { status, data } = serviceResponse;
-      res.status(mapStatusHTTP(status)).json(data);
+      return res.status(mapStatusHTTP(status)).json(data);
     }
 
     const serviceResponse = await this.matchService.getAllMatches();
