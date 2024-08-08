@@ -21,6 +21,7 @@ export default class MatchService {
 
   public async endMatch(id: number): Promise<ServiceResponse<IMatches>> {
     const updatedMatch = await this.matchModel.update(id);
+
     if (!updatedMatch) {
       return { status: 'NOT_FOUND', data: { message: 'Match not founded' } };
     }

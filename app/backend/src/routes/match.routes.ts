@@ -9,11 +9,16 @@ const router = Router();
 
 router.get('/', (req: Request, res: Response) => matchController.getAllMatches(req, res));
 
-router.use(
+// router.use(
+//   (req: Request, res: Response, next: NextFunction) =>
+//     tokenValidation.validateToken(req, res, next),
+// );
+// router.use(tokenValidation.validateToken);
+router.patch(
+  '/:id/finish',
   (req: Request, res: Response, next: NextFunction) =>
     tokenValidation.validateToken(req, res, next),
+  (req: Request, res: Response) => matchController.endMatch(req, res),
 );
-// router.use(tokenValidation.validateToken);
-router.patch('/:id/finish', (req: Request, res: Response) => matchController.endMatch(req, res));
 
 export default router;

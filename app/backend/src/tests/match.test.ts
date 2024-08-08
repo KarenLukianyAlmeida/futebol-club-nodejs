@@ -35,7 +35,7 @@ describe('Testing Matches', () => {
     expect(body).to.have.length(2);
   });
 
-  it.only('should update inProgress atribute to false', async function () {
+  it('should update inProgress atribute to false', async function () {
     sinon.stub(authMiddleware.prototype, 'validateToken').callsFake(async (req, res, next) => { return next() });
     sinon.stub(SequelizeMatch, 'findOne').resolves(allMatches[1] as any);
     sinon.stub(SequelizeMatch, 'update').resolves([1] as any);
