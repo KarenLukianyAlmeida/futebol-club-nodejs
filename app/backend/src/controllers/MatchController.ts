@@ -19,4 +19,13 @@ export default class MatchController {
 
     res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async endMatch(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const serviceResponse = await this.matchService.endMatch(Number(id));
+    const { status, data } = serviceResponse;
+    console.log({ status, data });
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }

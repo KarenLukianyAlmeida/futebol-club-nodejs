@@ -16,16 +16,18 @@ class TokenValidation {
     }
 
     const token = authorization.split(' ')[1];
-
+    console.log({ token });
     try {
       const decoded = jwt.verify(token);
+      console.log({ decoded });
       const user = await this.userModel.findOne(decoded.email);
-
+      console.log({ user });
       if (user) {
         req.body.user = { decoded };
         next();
       }
-    } catch {
+    } catch(err) {
+      console.log(err);
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
   }

@@ -18,4 +18,13 @@ export default class MatchService {
 
     return { status: 'SUCCESSFUL', data: filteredMatches };
   }
+
+  public async endMatch(id: number): Promise<ServiceResponse<IMatches>> {
+    const updatedMatch = await this.matchModel.update(id);
+    if (!updatedMatch) {
+      return { status: 'NOT_FOUND', data: { message: 'Match not founded' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
+  }
 }

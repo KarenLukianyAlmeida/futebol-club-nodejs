@@ -6,6 +6,7 @@ import chaiHttp = require('chai-http');
 import { app } from '../app';
 import SequelizeMatch from '../database/models/SequelizeMatch';
 import { allMatches } from './mocks/match.mock';
+import authMiddleware from '../middlewares/auth.middleware';
 
 chai.use(chaiHttp);
 
@@ -25,12 +26,24 @@ describe('Testing Matches', () => {
     expect(body).to.be.deep.equal(allMatches);
   });
 
-  it.only('should return all matches in progress', async function () {
+  it('should return all matches in progress', async function () {
     sinon.stub(SequelizeMatch, 'findAll').resolves(allMatches as any);
 
     const { status, body } = await chai.request(app).get('/matches/?inProgress=true');
 
     expect(status).to.be.equal(200);
     expect(body).to.have.length(2);
+  });
+
+  it.only('should update inProgress atribute to false', async function () {
+    sinon.stub(authMiddleware.prototype, 'validateToken').callsFake(async (req, res, next) => { return next() });
+    sinon.stub(SequelizeMatch, 'findOne').resolves(allMatches[1] as any);
+    sinon.stub(SequelizeMatch, 'update').resolves([1] as any);
+
+    const { status, body } = await chai.request(app).patch('/matches/42/finish');
+    console.log('status: ', status);
+
+    expect(status).to.be.equal(200);
+    expect(body).to.be.deep.equal({ message: 'Finished' });
   });
 });
