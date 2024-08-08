@@ -6,9 +6,7 @@ export default class UserModel implements IUserModel {
   private model = SequelizeUser;
 
   async findOne(email: IUsers['email']): Promise<IUsers | null> {
-    console.log({ email });
     const dbData = await this.model.findOne({ where: { email } });
-    console.log({ dbData });
     if (dbData === null) return null;
 
     const { id, username, role, password }: IUsers = dbData;
