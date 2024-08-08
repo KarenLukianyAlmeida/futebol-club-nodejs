@@ -6,7 +6,7 @@ import chaiHttp = require('chai-http');
 import { app } from '../app';
 import SequelizeUser from '../database/models/SequelizeUser';
 import { user } from './mocks/user.mock';
-import { token, loginWithoutEmail, loginInvalidPasword } from './mocks/login.mock';
+import { token, loginWithoutEmail, loginInvalidPasword, login } from './mocks/login.mock';
 import jwt from '../utils/jwt';
 
 chai.use(chaiHttp);
@@ -22,10 +22,10 @@ describe('Testing Login', () => {
     sinon.stub(SequelizeUser, 'findOne').resolves(user as any);
     sinon.stub(jwt, 'sign').returns(token as any);
 
-    const { email, password } = user;
+    const { email, password } = login;
 
     const { status, body } = await chai.request(app).post('/login').send({email, password});
-
+    
     expect(status).to.be.equal(200);
     expect(body).to.be.deep.equal({token});
   });
