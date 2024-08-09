@@ -28,4 +28,15 @@ export default class MatchService {
 
     return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
   }
+
+  public async updateGoals(id: number, dataGoals: number[]):
+  Promise<ServiceResponse<IMatches>> {
+    const updateGoals = await this.matchModel.updateGoals(id, dataGoals);
+
+    if (!updateGoals) {
+      return { status: 'NOT_FOUND', data: { message: 'Match not founded' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: updateGoals };
+  }
 }

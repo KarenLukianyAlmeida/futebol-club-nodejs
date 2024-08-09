@@ -24,7 +24,15 @@ export default class MatchModel implements IMatchModel {
       await dbData.update({ inProgress: false });
       return dbData;
     }
+    return null;
+  }
 
+  async updateGoals(id: number, dataGoals: number[]): Promise<IMatches | null> {
+    const dbData = await this.model.findOne({ where: { id } });
+    if (dbData) {
+      await dbData.update({ homeTeamGoals: dataGoals[0], awayTeamGoals: dataGoals[1] });
+      return dbData;
+    }
     return null;
   }
 }
