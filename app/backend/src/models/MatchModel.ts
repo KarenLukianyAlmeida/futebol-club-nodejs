@@ -2,6 +2,7 @@ import IMatches from '../Interfaces/matches/IMatch';
 import SequelizeMatch from '../database/models/SequelizeMatch';
 import { IMatchModel } from '../Interfaces/matches/IMatchModel';
 import SequelizeTeam from '../database/models/SequelizeTeam';
+import { NewEntity } from '../Interfaces';
 
 export default class MatchModel implements IMatchModel {
   private model = SequelizeMatch;
@@ -34,5 +35,24 @@ export default class MatchModel implements IMatchModel {
       return dbData;
     }
     return null;
+  }
+
+  async create(data: Partial<NewEntity<IMatches>>): Promise<IMatches | null> {
+    const { homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals } = data;
+    if (
+      homeTeamId === undefined
+      || awayTeamId === undefined
+      || homeTeamGoals === undefined
+      || awayTeamGoals === undefined
+    ) {
+      return null;
+    }
+
+    const dbData = await this.model
+      .create({ homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress: true });
+
+    const { id, inProgress }:IMatches = dbData;
+
+    return { id, homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress };
   }
 }

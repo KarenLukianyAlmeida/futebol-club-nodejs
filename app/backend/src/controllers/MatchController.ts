@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
 import MatchService from '../services/MatchServise';
+import IMatches from '../Interfaces/matches/IMatch';
+import { NewEntity } from '../Interfaces';
 
 export default class MatchController {
   constructor(private matchService = new MatchService()) { }
@@ -37,6 +39,18 @@ export default class MatchController {
     const serviceResponse = await this.matchService.updateGoals(Number(id), dataGoals);
     const { status, data } = serviceResponse;
 
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
+
+  public async createMatch(req: Request, res: Response) {
+    const { homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals } = req.body;
+    const matchData: Partial<NewEntity<IMatches>> = {
+      homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals,
+    };
+
+    const serviceResponse = await this.matchService.createMatch(matchData);
+    const { status, data } = serviceResponse;
+    console.log({ status });
     return res.status(mapStatusHTTP(status)).json(data);
   }
 }

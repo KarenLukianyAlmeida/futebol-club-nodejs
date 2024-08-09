@@ -20,7 +20,7 @@ InferCreationAttributes<SequelizeMatch>> {
 
   declare awayTeamGoals: number;
 
-  declare inProgress: boolean;
+  declare inProgress: CreationOptional<boolean>;
 }
 
 SequelizeMatch.init({

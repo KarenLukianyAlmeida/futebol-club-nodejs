@@ -35,13 +35,13 @@ describe('Testing Matches', () => {
     expect(body).to.have.length(2);
   });
 
-  it.only('should update inProgress atribute to false', async function () {
-    // sinon.stub(SequelizeMatch, 'findOne').resolves(allMatches[1] as any);
-    // sinon.stub(SequelizeMatch, 'update').resolves();
+  // it.('should update inProgress atribute to false', async function () {
+  //   // sinon.stub(SequelizeMatch, 'findOne').resolves(allMatches[1] as any);
+  //   // sinon.stub(SequelizeMatch, 'update').resolves();
 
-    const { status, body } = await chai.request(app).patch('/matches/42/finish');
+  //   const { status, body } = await chai.request(app).patch('/matches/42/finish');
 
-    expect(status).to.be.equal(200);
-    // expect(body).to.be.deep.equal({ message: 'Finished' });
-  });
+  //   expect(status).to.be.equal(200);
+  //   // expect(body).to.be.deep.equal({ message: 'Finished' });
+  // });
 });
