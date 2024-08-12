@@ -1,10 +1,12 @@
 import { ServiceResponse } from '../Interfaces/ServiceRespoonse';
 import ITeams from '../Interfaces/teams/ITeams';
 import TeamModel from '../models/TeamModel';
+import MatchModel from '../models/MatchModel';
 
 export default class TeamService {
   constructor(
     private teamModel: TeamModel = new TeamModel(),
+    private macheModel: MatchModel = new MatchModel(),
   ) { }
 
   public async getAllTeams(): Promise<ServiceResponse<ITeams[]>> {
