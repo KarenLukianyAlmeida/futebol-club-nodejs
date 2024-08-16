@@ -1,5 +1,5 @@
 import TeamModel from '../models/TeamModel';
-import ILeaderboard from '../Interfaces/ILeaderboard';
+import ILeaderboard from '../Interfaces/leaderboard/ILeaderboard';
 import { ServiceResponse } from '../Interfaces/ServiceRespoonse';
 import MatchModel from '../models/MatchModel';
 import IMatches from '../Interfaces/matches/IMatch';
@@ -10,7 +10,7 @@ export default class LeaderboardService {
     private matcheModel: MatchModel = new MatchModel(),
   ) { }
 
-  private static calculateGoals(teamMatches: IMatches[]): ILeaderboard {
+  private static calculateGoals(teamMatches: IMatches[]) {
     let goalsFavor = 0;
     let goalsOwn = 0;
 
@@ -19,12 +19,12 @@ export default class LeaderboardService {
       goalsOwn += match.awayTeamGoals;
     });
 
-    // const goalsBalance = goalsFavor - goalsOwn;
+    const goalsBalance = goalsFavor - goalsOwn;
 
-    return { goalsFavor, goalsOwn };
+    return { goalsFavor, goalsOwn, goalsBalance };
   }
 
-  private static calculateResultsMatches(teamMatches: IMatches[]): ILeaderboard {
+  private static calculateResultsMatches(teamMatches: IMatches[]) {
     let totalPoints = 0;
     let totalVictories = 0;
     let totalDraws = 0;
@@ -38,7 +38,6 @@ export default class LeaderboardService {
         totalPoints += 1;
         totalDraws += 1;
       } else {
-        totalPoints += 0;
         totalLosses += 1;
       }
     });
@@ -56,11 +55,11 @@ export default class LeaderboardService {
 
     const totalGames = teamMatches.length;
 
-    // let efficiency = 0;
+    let efficiency = '';
 
-    // if (totalPoints) {
-    //   efficiency = Number(((totalPoints / (totalGames * 3)) * 100).toFixed(2));
-    // }
+    if (totalPoints) {
+      efficiency = ((totalPoints / (totalGames * 3)) * 100).toFixed(2);
+    }
 
     return {
       totalPoints,
@@ -69,23 +68,23 @@ export default class LeaderboardService {
       totalDraws,
       totalLosses,
       ...resultGoals,
-      // efficiency,
+      efficiency,
     };
   }
 
-  // private static orderMtaches(matches: ILeaderboard[]): ILeaderboard[] {
-  //   return matches.sort((a, b) => {
-  //     if (
-  //       b.totalPoints
-  //       && a.totalPoints
-  //       && b.totalVictories && a.totalVictories
-  //       && b.goalsBalance && a.goalsBalance
-  //       && b.goalsFavor && a.goalsFavor
-  //     ) {
-  //       a.totalPoints > b.totalPoints ? 1 : -1;
-  //     }
-  //   });
-  // }
+  private static sortMatches(leaderboard: ILeaderboard[]): ILeaderboard[] {
+    return leaderboard.sort((a, b) => {
+      if (a.totalPoints !== b.totalPoints) return b.totalPoints - a.totalPoints;
+
+      if (a.totalVictories !== b.totalVictories) return b.totalVictories - a.totalVictories;
+
+      if (a.goalsBalance !== b.goalsBalance) return b.goalsBalance - a.goalsBalance;
+
+      if (a.goalsFavor !== b.goalsFavor) return b.goalsFavor - a.goalsFavor;
+
+      return 0;
+    });
+  }
 
   public async getLeaderboard(): Promise<ServiceResponse<ILeaderboard[]>> {
     const allMatches = await this.matcheModel.findAll();
@@ -101,8 +100,8 @@ export default class LeaderboardService {
       return formatedMatches;
     });
 
-    // const orderedMatches = LeaderboardService.orderMtaches(leaderboard);
+    const sortedMatches = LeaderboardService.sortMatches(leaderboard);
 
-    return { status: 'SUCCESSFUL', data: leaderboard };
+    return { status: 'SUCCESSFUL', data: sortedMatches };
   }
 }
