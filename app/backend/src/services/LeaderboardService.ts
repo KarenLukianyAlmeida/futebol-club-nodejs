@@ -46,7 +46,7 @@ export default class LeaderboardService {
   }
 
   private static generateHomeBoard(teamId: number, allMatches: IMatches[]): ILeaderboard {
-    const teamMatches = allMatches.filter((team) => team.homeTeamId === teamId);
+    const teamMatches = allMatches.filter((t) => t.homeTeamId === teamId && t.inProgress === false);
 
     const { totalPoints, totalVictories,
       totalDraws, totalLosses } = LeaderboardService.calculateResultsMatches(teamMatches);
