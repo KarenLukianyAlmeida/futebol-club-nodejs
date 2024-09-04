@@ -1,13 +1,17 @@
 
 # Skills Developed
 
-- __Interacting with MySQL:__ Gained proficiency in interacting with a relational database using ***MySQL***.
+- __ORM Utilization (Sequelize):__ Utilized ***Sequelize*** ORM to efficiently interact with the database, streamlining data operations.
   
-- __Layered Architecture Implementation:__ Developed an API using a layered architecture approach to ensure organized and maintainable code.
+- __Layered Architecture Implementation:__ Organized the project using the MSC ___(Model-Service-Controller)___ architecture to ensure clean and maintainable code.
   
 - __Data Validation:__ Implemented robust data validation techniques to ensure the integrity of information received by the API.
   
-- __API Testing:__ Wrote comprehensive tests to validate the functionality of API endpoints, ensuring reliable and error-free operations. ___Mocha, Sinon, and Chai___ were used.
+- __API Testing:__ Tested the application's endpoints using ___Thunder Client___ and conducted integration tests with ___Mocha, Chai, and Sinon___ to ensure reliability.
+
+- __Authentication and Validation with JWT:__ mplemented ___JWT___ for user authentication and validation, securing the application.
+ 
+- __SOLID Principles and OOP:__ eveloped the code following ___SOLID___ principles and ___Object-Oriented Programming (OOP)___ concepts for a robust and maintainable structure.
 
 # What was developed
 
@@ -151,12 +155,16 @@ git clone https://github.com/KarenLukianyAlmeida/futebol-club-nodejs.git
 ```
 
 2. __Install the dependencies__
-   
+
+Run the command in the root of the project.
+
 ```bash
 npm run install:apps
 ```
 
-3. __Start the backend and db containers from the compose__
+3. __Start the frontend, backend and db containers from the compose__
+
+Run the command in the root of the project.
 
 ```bash
 npm run compose:up
