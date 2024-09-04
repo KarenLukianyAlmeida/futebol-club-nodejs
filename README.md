@@ -44,12 +44,12 @@ API RESTfull developed to be consumed by a frontend provided by the technical te
   >>
   >>```json
   >> {
-  >> "email": "string",
-  >> "password": "string"
+  >>  "email": "string",
+  >>  "password": "string"
   >> }
   >> ```
   > 
-  > 4. Returns the user's typ:
+  > 4. Returns the user's type:
   >
   > ```bash
   > GET /login/role
@@ -73,29 +73,41 @@ API RESTfull developed to be consumed by a frontend provided by the technical te
   > GET /matches?inProgress=false
   > ```
   >
-  > 8. Deletes a product by `id`:
+  > 8. Ends a match in the database:
   >
   > ```bash
-  > DELETE /products/:id
+  > PATCH /matches/:id/finish
   > ```
   >   
-  > 9. Deletes a sale by `id`:
+  > 9. Update the result of a match:
   >
   > ```bash
-  > DELETE /sales/:id
-  > ```
-  >   
-  > 10. Updates the quantity of a product:
-  >
-  > ```bash
-  > /sales/:saleId/products/:productId/quantity
+  > PATCH /matches/:id
   > ```
   >
   >> The request body should follow the format below:
   >>
   >>```json
   >> {
-  >>  "quantity": 20
+  >>  "homeTeamGoals": 3,
+  >>  "awayTeamGoals": 1
+  >> }
+  >> ```
+  > 
+  > 10. Register a new match in progress in the database:
+  >
+  > ```bash
+  > POST /matches
+  > ```
+  >
+  >> The request body should follow the format below:
+  >>
+  >>```json
+  >> {
+  >>  "homeTeamId": 16,
+  >>  "awayTeamId": 8,
+  >>  "homeTeamGoals": 2,
+  >>  "awayTeamGoals": 2
   >> }
   >> ```
   >
