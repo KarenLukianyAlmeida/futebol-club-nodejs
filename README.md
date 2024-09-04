@@ -111,7 +111,7 @@ API RESTfull developed to be consumed by a frontend provided by the technical te
   >> }
   >> ```
   >
-  > 11. Returns the standings of the home teams.:
+  > 11. Returns the standings of the home teams:
   >
   > ```bash
   > GET /leaderboard/home
