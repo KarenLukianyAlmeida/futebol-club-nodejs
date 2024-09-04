@@ -22,24 +22,33 @@ API RESTfull developed to be consumed by a frontend provided by the technical te
 <details>
   <summary><strong>Endpoints</strong></summary><br />
 
-  > 1. Returns all registered products: 
+  > 1. Returns all registered teams: 
   >
   > ```bash
-  > GET /products
+  > GET /teams
   > ```
   >   
-  > 2. Returns only the product with the `id` from the URL:
+  > 2. Returns only the team with the `id` from the URL:
   >
   > ```bash
-  > GET /products/:id
+  > GET /teams/:id
   > ```
   >   
   > 3. Returns all sales:
   >
   > ```bash
-  > GET /sales
+  > POST /login
   > ```
-  >   
+  >
+  >> The request body should follow the format below:
+  >>
+  >>```json
+  >> {
+  >> "email": "string",
+  >> "password": "string"
+  >> }
+  >> ```
+  > 
   > 4. Returns only the sale with the `id` from the URL:
   >
   > ```bash
@@ -139,7 +148,7 @@ API RESTfull developed to be consumed by a frontend provided by the technical te
   > To run all tests, use the following command in the terminal:
   > 
   > ```bash
-  > npm run test:mocha
+  > npm run test
   > ```
   >     
 
