@@ -147,18 +147,17 @@ The RESTful API developed is a sales management system where it is possible to c
 1. __Clone the repository__
 
 ```bash
-git clone https://github.com/KarenLukianyAlmeida/job-insights-python.git
+git clone https://github.com/KarenLukianyAlmeida/futebol-club-nodejs.git
 ```
 
 2. __Install the dependencies__
    
 ```bash
-npm install
+npm run install:apps
 ```
+
 3. __Start the backend and db containers from the compose__
 
-- The application will be available at http://localhost:3001 in development mode.
-
 ```bash
-docker-compose up -d
+npm run compose:up
 ```
