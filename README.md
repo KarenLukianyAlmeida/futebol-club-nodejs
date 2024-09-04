@@ -15,7 +15,7 @@
 
 # What was developed
 
-The RESTful API developed is a sales management system where it is possible to create, view, delete, and update products and sales. MySQL was used to manage the data.
+API RESTfull developed to be consumed by a frontend provided by the technical team at Trybe. This API manages matches and team standings in soccer.
 
 # Features
 
