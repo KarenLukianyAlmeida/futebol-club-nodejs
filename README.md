@@ -111,17 +111,11 @@ API RESTfull developed to be consumed by a frontend provided by the technical te
   >> }
   >> ```
   >
-  > 11. Returns all products that contain the declared name in the query:
+  > 11. Returns the standings of the home teams.:
   >
   > ```bash
-  > GET /products/search
+  > GET /leaderboard/home
   > ```
-  >
-  >> The query params of the request should follow the format below:
-  >>
-  >>```bash
-  >>  http://localhost:PORT/products/search?q=Martelo
-  >> ```
   >
 </details>
 
