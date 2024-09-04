@@ -1,4 +1,8 @@
 
+# What was developed
+
+This project aimed to develop a RESTful API that performs CRUD operations to manage information about soccer teams and matches. The API is also capable of generating and returning team standings based on a set of business rules.
+
 # Skills Developed
 
 - __ORM Utilization (Sequelize):__ Utilized ***Sequelize*** ORM to efficiently interact with the database, streamlining data operations.
@@ -12,10 +16,6 @@
 - __Authentication and Validation with JWT:__ mplemented ___JWT___ for user authentication and validation, securing the application.
  
 - __SOLID Principles and OOP:__ eveloped the code following ___SOLID___ principles and ___Object-Oriented Programming (OOP)___ concepts for a robust and maintainable structure.
-
-# What was developed
-
-API RESTfull developed to be consumed by a frontend provided by the technical team at Trybe. This API manages matches and team standings in soccer.
 
 # Features
 
