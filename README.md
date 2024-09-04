@@ -34,7 +34,7 @@ API RESTfull developed to be consumed by a frontend provided by the technical te
   > GET /teams/:id
   > ```
   >   
-  > 3. Returns all sales:
+  > 3. Performs login for already registered users:
   >
   > ```bash
   > POST /login
@@ -49,58 +49,29 @@ API RESTfull developed to be consumed by a frontend provided by the technical te
   >> }
   >> ```
   > 
-  > 4. Returns only the sale with the `id` from the URL:
+  > 4. Returns the user's typ:
   >
   > ```bash
-  > GET /sales/:id
+  > GET /login/role
   > ```
   >   
-  > 5. Registers a new product:
+  > 5. Returns a list of matches.:
   >
   > ```bash
-  > POST /products
+  > GET /matches
   > ```
-  >
-  >> The request body should follow the format below:
-  >>
-  >>```json
-  >> { "name": "ProdutoX" }
-  >> ```
   >   
-  > 6. Registers a new sale:
+  > 6. Returns all matches in progress.:
   >
   > ```bash
-  > POST /sales
+  > GET /matches?inProgress=true
   > ```
-  >
-  >> The request body should follow the format below:
-  >>
-  >>```json
-  >>[
-  >>  {
-  >>    "productId": 1,
-  >>    "quantity": 1
-  >>  },
-  >>  {
-  >>    "productId": 2,
-  >>    "quantity": 5
-  >>  }
-  >> ]
-  >> ```
   >  
-  > 7. Updates a product:
+  > 7. Returns all finished matches:
   >
   > ```bash
-  > PUT /products/:id
+  > GET /matches?inProgress=false
   > ```
-  >
-  >> The request body should follow the format below:
-  >>
-  >>```json
-  >> {
-  >>  "name": "Martelo do Batman"
-  >> }
-  >> ```
   >
   > 8. Deletes a product by `id`:
   >
