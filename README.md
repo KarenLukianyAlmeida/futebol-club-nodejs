@@ -1,7 +1,7 @@
 
 # What was developed
 
-This project aimed to develop a RESTful API that performs CRUD operations to manage information about soccer teams and matches. The API is also capable of generating and returning team standings based on a set of business rules.
+This project aimed to develop a RESTful API that performs CRUD operations to manage information about soccer teams and matches. The API can also generate and return team standings based on a set of business rules.
 
 # Skills Developed
 
