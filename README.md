@@ -3,11 +3,15 @@
 
 This project aimed to develop a RESTful API that performs CRUD operations to manage information about soccer teams and matches. The API can also generate and return team standings based on a set of business rules.
 
+## Technologies
+
+> Back-end: Node.js, TypeScript, Express, Sequelize, MySQL, JWT, Mocha, Sinon, Chai and VS Code. 
+
 # Skills Developed
 
 - __ORM Utilization (Sequelize):__ Utilized ***Sequelize*** ORM to efficiently interact with the database, streamlining data operations.
   
-- __Layered Architecture Implementation:__ Organized the project using the MSC ___(Model-Service-Controller)___ architecture to ensure clean and maintainable code.
+- __Layered Architecture Implementation:__ Organized the project using the MvC ___(Model-View-Controller)___ architecture to ensure clean and maintainable code.
   
 - __Data Validation:__ Implemented robust data validation techniques to ensure the integrity of information received by the API.
   
