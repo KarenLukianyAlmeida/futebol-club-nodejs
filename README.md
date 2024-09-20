@@ -5,7 +5,7 @@ This project aimed to develop a RESTful API that performs CRUD operations to man
 
 ## Technologies
 
-> Back-end: Node.js, TypeScript, Express, Sequelize, MySQL, JWT, Mocha, Sinon, Chai and VS Code. 
+> Node.js | TypeScript | Express | Sequelize | MySQL | JWT | Mocha | Sinon | Chai | VS Code. 
 
 # Skills Developed
 
