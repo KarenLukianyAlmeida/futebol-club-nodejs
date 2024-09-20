@@ -7,7 +7,7 @@ This project aimed to develop a RESTful API that performs CRUD operations to man
 
 > Node.js | TypeScript | Express | Sequelize | MySQL | JWT | Mocha | Sinon | Chai | VS Code. 
 
-# Skills Developed
+## Skills Developed
 
 - __ORM Utilization (Sequelize):__ Utilized ***Sequelize*** ORM to efficiently interact with the database, streamlining data operations.
   
@@ -21,7 +21,7 @@ This project aimed to develop a RESTful API that performs CRUD operations to man
  
 - __SOLID Principles and OOP:__ eveloped the code following ___SOLID___ principles and ___Object-Oriented Programming (OOP)___ concepts for a robust and maintainable structure.
 
-# Features
+## Features
 
 <details>
   <summary><strong>Endpoints</strong></summary><br />
@@ -136,7 +136,7 @@ This project aimed to develop a RESTful API that performs CRUD operations to man
 </details>
 
 
-# Execute the project
+## Execute the project
 
 1. __Clone the repository__
 
